@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from './Card'
 import { datas } from '../data'
+import Link from 'next/link'
 
 
 export default function Projects() {
@@ -22,6 +23,8 @@ export default function Projects() {
                          />
                 ))} 
             </div>
+            <Link href="#" className='block text-center my-10
+            underline text-xl font-medium text-gray-900'>See all projects</Link>
         </div>
     )
 }
