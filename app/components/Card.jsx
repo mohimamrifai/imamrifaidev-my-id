@@ -16,7 +16,7 @@ export default function Card({ judul, img, desc, tech, code, demo, index }) {
                         </div>
                     ))}
                 </div>
-                <p className='mt-5 text-justify px-3 text-base text-gray-600 lg:text-center'>{desc}</p>
+                <p className='mt-5 text-justify px-3 text-base text-gray-600 lg:text-justify'>{desc}</p>
                 {/* live demo and code */}
                 <div className='flex mt-5 justify-center gap-10'>
                     <Link href={code} className='flex gap-2 underline'>
