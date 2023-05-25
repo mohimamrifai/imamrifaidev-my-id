@@ -9,7 +9,7 @@ export default function Navbar() {
 
     return (
         <div>
-            <nav className='flex justify-between items-center py-2 px-6 border-2 fixed top-0 w-full md:py-5 lg:px-20 bg-white'>
+            <nav className='flex justify-between items-center py-2 px-6 border-2 fixed top-0 w-full md:py-5 lg:px-20 bg-white z-20'>
                 <h1 className='text-gray-900 text-3xl font-semibold font-playFair md:text-4xl'>imamrifai.dev</h1>
                 <div className='hidden md:flex md:items-center'>
                     <a href="/" className='text-lg mx-3'>Home</a>
@@ -23,6 +23,7 @@ export default function Navbar() {
                     height={18}
                     onClick={() => setActive(true)}
                     className='md:hidden'
+                    alt='menu'
                 />
             </nav>
 
@@ -34,9 +35,10 @@ export default function Navbar() {
                     height={18}
                     className='absolute right-5 top-5'
                     onClick={() => setActive(false)}
+                    alt='close'
                  />
                 <div className='flex flex-col'>
-                    <a href="/" className='text-lg'>Home</a>
+                    <a href="/" className='mb-3 text-lg'>Home</a>
                     <a href="/" className='mb-3 text-lg'>Portofolio</a>
                     <a href="/" className='mb-8 text-lg'>About us</a>
                     <a href="#" className='mb-3 text-lg border-2 border-white w-min py-1 px-6'>Contact</a>

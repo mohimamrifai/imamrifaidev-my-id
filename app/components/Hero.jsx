@@ -14,22 +14,22 @@ export default function Hero() {
                     <p className='text-gray-700'>Follow me</p>
                     <div className="flex gap-2 mt-1">
                         <a href="#">
-                            <Image src="/linkedin.png" width={40} height={50} />
+                            <Image src="/linkedin.png" width={40} height={50} alt='icon1'/>
                         </a>
                         <a href="#">
-                            <Image src="/github.png" width={40} height={50} />
+                            <Image src="/github.png" width={40} height={50} alt='icon2'/>
                         </a>
                         <a href="#">
-                            <Image src="/instagram.png" width={40} height={50} />
+                            <Image src="/instagram.png" width={40} height={50} alt='icon3'/>
                         </a>
                         <a href="#">
-                            <Image src="/tiktok.png" width={40} height={50} />
+                            <Image src="/tiktok.png" width={40} height={50} alt='icon4'/>
                         </a>
                     </div>
                 </div>
             </div>
             <div className="right bg-gradient-to-t from-black to-white mt-16 w-10/12 md:h-[500px] md:mt-6 mx-auto rounded-bl-[50px] rounded-br-[50px] overflow-hidden lg:w-6/12 lg:rounded-none lg:bg-none lg:h-[600px] lg:mt-0">
-                <Image src="/profile.png" className='w-full h-full object-cover rounded-bl-[50px] rounded-br-[50px]' width={350} height={400} />
+                <Image src="/profile.png" alt='' className='w-full h-full object-cover rounded-bl-[50px] rounded-br-[50px]' width={350} height={400} />
             </div>
         </div>
     )
