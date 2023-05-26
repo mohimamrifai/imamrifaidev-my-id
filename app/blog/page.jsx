@@ -14,9 +14,9 @@ export default function Blog() {
                     <Image 
                         src="/blog/post-img.png" width={300} height={350} alt='gambar' className='w-full mb-5'
                      />
-                        <Link href={`/blog/${slug}`} className='text-2xl ps-8 font-playFair tracking-wider font-bold'>{judul}</Link>
+                        <Link href={`/blog/post/${slug}`} className='text-2xl ps-8 font-playFair tracking-wider font-bold'>{judul}</Link>
                         <p className='my-3 px-8 text-justify text-gray-800'>{desc}...</p>
-                        <Link href={`/blog/${slug}`} className='underline ps-8 font-semibold'>Read more</Link>
+                        <Link href={`/blog/post/${slug}`} className='underline ps-8 font-semibold'>Read more</Link>
                     </div>
                 ))}
             </div>
