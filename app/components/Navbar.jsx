@@ -17,6 +17,10 @@ export default function Navbar() {
             name: "Blog",
             href: "/blog"
         },
+        {
+            name: "Projects",
+            href: "/projects"
+        },
     ]
     const [active, setActive] = useState(false);
     const pathname = usePathname();
@@ -54,6 +58,7 @@ export default function Navbar() {
                 <div className='flex flex-col'>
                     <Link href="/" className='mb-3 text-lg' onClick={() => setActive(false)} >Home</Link>
                     <Link href="/blog" onClick={() => setActive(false)} className='mb-3 text-lg'>Blog</Link>
+                    <Link href="/projects" onClick={() => setActive(false)} className='mb-3 text-lg'>Projects</Link>
                     <Link href="#" className='mb-3 text-lg border-2 border-white w-min py-1 px-6'>Contact</Link>
                 </div>
             </div>

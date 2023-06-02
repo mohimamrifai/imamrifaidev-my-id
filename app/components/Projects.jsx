@@ -10,7 +10,7 @@ export default function Projects() {
             <h2 className='text-2xl text-blue-600 font-semibold tracking-wider'>Portofolio</h2>
             <p className='text-gray-700 lg:text-lg'>Project yang pernah aku buat 🌱</p>
             <div className="container">
-                {datas.map(({id, img, judul, desc, tech, code, demo})=> (
+                {datas.slice(0,3).map(({id, img, judul, desc, tech, code, demo})=> (
                     <Card 
                         judul={judul} 
                         key={id}
@@ -23,7 +23,7 @@ export default function Projects() {
                          />
                 ))} 
             </div>
-            <Link href="#" className='block text-center my-10
+            <Link href="/projects" className='block text-center my-10
             underline text-xl font-medium text-gray-900'>See all projects 👉</Link>
         </div>
     )

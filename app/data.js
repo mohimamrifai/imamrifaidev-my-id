@@ -61,4 +61,22 @@ export const datas = [
         code: "https://github.com/mohimamrifai/dashboard",
         demo: "https://dashboard-miror.vercel.app/"
     },
+    {
+        id: 4,
+        img: "images/weather-snap.png",
+        judul: "Weather Snap",
+        desc: "Ini adalah webiste perkiraan cuaca untuk seluruh daerah di dunia, Dibuat menggunakan react js dan tailwind css serta bantuan Api dari https://openweathermap.org/api",
+        tech: [
+            {
+                name: "React js",
+                icon: "atom.png"
+            },
+            {
+                name: "Tailwind css",
+                icon: "tailwind.png"
+            },
+        ],
+        code: "https://github.com/mohimamrifai/weather-snap",
+        demo: "https://weather-snap-nine.vercel.app/"
+    },
 ]
