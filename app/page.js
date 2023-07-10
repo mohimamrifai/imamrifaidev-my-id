@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Navbar />
       <Scroll />
-      <main className='mt-32 lg:mt-20'>
+      <main className='lg:mt-20 dark:bg-gray-900 dark:text-white'>
         <Hero />
         <About />
         <Projects />

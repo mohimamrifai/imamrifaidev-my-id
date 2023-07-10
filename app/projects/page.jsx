@@ -5,8 +5,9 @@ import Card from '../components/Card'
 
 export default function page() {
     return (
-        <div className='mt-20 font-Poppins mb-10 md:mt-24 px-10 lg:w-8/12 lg:mx-auto'>
-            <h2 className='text-2xl'>All projects </h2>
+        <div className='dark:bg-gray-900'>
+            <div className='pt-20 font-Poppins pb-10 md:pt-24 px-10 lg:w-8/12 lg:mx-auto '>
+            <h2 className='text-2xl dark:text-white'>All projects </h2>
             <div className="container flex flex-col justify-center items-center">
                 {datas.map(({ id, img, judul, desc, tech, code, demo }) => (
                     <Card
@@ -22,5 +23,6 @@ export default function page() {
                 ))}
             </div>
         </div>
-    )
+        </div>
+)
 }

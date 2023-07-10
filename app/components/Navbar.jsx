@@ -1,35 +1,43 @@
 "use client"
 
 import { usePathname } from 'next/navigation';
+import {AiOutlineMenu} from 'react-icons/ai'
 
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link';
 import navLinks from '../navLinks';
+import {BsFillMoonFill, BsFillSunFill} from 'react-icons/bs'
 
 export default function Navbar() {
 
     const [active, setActive] = useState(false);
+    const [isDark , setIsDark] = useState(false)
     const pathname = usePathname();
+
+    const handleDarkMode = () => {
+        document.body.classList.toggle('dark')
+        setIsDark(!isDark)
+      }
 
     return (
         <div>
-            <nav className='flex justify-between items-center py-2 px-6 border-2 fixed top-0 w-full md:py-5 lg:px-20 bg-white z-20'>
-                <Link href="/" className='text-gray-900 hover:text-blue-600 duration-200 text-3xl font-semibold font-playFair md:text-4xl'>imamrifai.dev</Link>
+            <nav className='flex justify-between items-center py-2 px-6 fixed top-0 w-full md:py-5 lg:px-20 bg-white z-20 dark:bg-gray-900'>
+                <Link href="/" className='text-gray-900 hover:text-blue-600 duration-200 text-3xl font-semibold font-playFair md:text-4xl dark:text-gray-100'>imamrifai.dev</Link>
                 <div className='hidden md:flex md:items-center'>
                     {navLinks.map(({ name, href }) => (
-                        <a href={href} key={name} className={`text-lg mx-3 hover:text-blue-600 font-Poppins duration-200 hover:underline ${pathname === href ? "text-blue-600 font-semibold" : "text-gray-900"}`}>{name}</a>
+                        <a href={href} key={name} className={`text-lg mx-3 hover:text-blue-600 font-Poppins duration-200 hover:underline ${pathname === href ? "text-blue-600 dark:text-gray-100 font-semibold" : "text-gray-900 dark:text-gray-100"}`}>{name}</a>
                     ))}
                 </div>
-                <Link href="https://api.whatsapp.com/send?phone=6282118668919&text=Halo%2C%20imam" target='_blank' className='hidden md:block md:text-lg font-Poppins border-2 hover:bg-blue-600 duration-200 transition-all hover:text-white md:border-gray-700 md:w-min md:py-1 md:px-6 md:text-gray-900'>Contact</Link>
-                <Image
-                    src="/menu.png"
-                    width={23}
-                    height={18}
+                <div className='flex items-center gap-3'>
+                {isDark ? <button  className='text-slate-100' onClick={handleDarkMode}><BsFillSunFill size={20}/></button> : <button onClick={handleDarkMode}><BsFillMoonFill size={20}/></button>}
+                <Link href="https://api.whatsapp.com/send?phone=6282118668919&text=Halo%2C%20imam" target='_blank' className='hidden md:block md:text-lg font-Poppins border-2 hover:bg-blue-600 duration-200 transition-all hover:text-white md:border-gray-700 md:w-min md:py-1 md:px-6 md:text-gray-900 dark:text-gray-100'>Contact</Link>
+                </div>
+                <AiOutlineMenu 
+                    size={25}
                     onClick={() => setActive(true)}
-                    className='md:hidden'
-                    alt='menu'
-                />
+                    className='md:hidden dark:text-white'
+                    />
             </nav>
 
             {/* nav ketika aktif di mobile */}
