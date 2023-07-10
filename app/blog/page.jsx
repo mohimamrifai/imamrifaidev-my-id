@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function Blog() {
     return (
-        <div className='mt-20 w-10/12 mx-auto'>
+        <div className='mt-20 mb-10 w-10/12 mx-auto font-Poppins'>
             <h1 className='text-2xl font-semibold text-gray-900 md:mt-24'>My Blog Posts</h1>
             <div className='mt-8 lg:grid lg:gap-5 lg:grid-cols-3'>
                 {posts.map(({ id, judul, slug, desc }) => (

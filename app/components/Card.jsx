@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function Card({ judul, img, desc, tech, code, demo, index }) {
     return (
-        <div className={`my-10 rounded-md text-center md:items-center md:flex ${index % 2 == 0 ? "flex-row-reverse" : "flex-row"} md:gap-5 lg:gap-10 lg:my-0 md:mx-auto lg:py-10`}>
+        <div className={`my-10 rounded-md text-center md:items-center md:flex md:gap-5 lg:gap-10 lg:my-0 md:mx-auto lg:py-10`}>
             <Image src={`/${img}`} width={350} height={300} alt={judul} className='rounded-md border-2 border-gray-300 p-1 md:h-[280px] lg:w-[400px] lg:h-[300px] mx-auto' />
             <div>
                 <h3 className='mt-3 text-2xl font-bold text-blue-600'>{judul}</h3>

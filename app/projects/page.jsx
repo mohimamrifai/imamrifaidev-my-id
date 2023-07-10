@@ -5,7 +5,7 @@ import Card from '../components/Card'
 
 export default function page() {
     return (
-        <div className='mt-20 md:mt-24 px-10 lg:w-8/12 lg:mx-auto'>
+        <div className='mt-20 font-Poppins mb-10 md:mt-24 px-10 lg:w-8/12 lg:mx-auto'>
             <h2 className='text-2xl'>All projects </h2>
             <div className="container flex flex-col justify-center items-center">
                 {datas.map(({ id, img, judul, desc, tech, code, demo }) => (

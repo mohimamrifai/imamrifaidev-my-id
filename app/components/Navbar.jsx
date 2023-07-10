@@ -5,23 +5,10 @@ import { usePathname } from 'next/navigation';
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link';
+import navLinks from '../navLinks';
 
 export default function Navbar() {
 
-    const navLinks = [
-        {
-            name: "Home",
-            href: "/"
-        },
-        {
-            name: "Blog",
-            href: "/blog"
-        },
-        {
-            name: "Projects",
-            href: "/projects"
-        },
-    ]
     const [active, setActive] = useState(false);
     const pathname = usePathname();
 
@@ -31,10 +18,10 @@ export default function Navbar() {
                 <Link href="/" className='text-gray-900 hover:text-blue-600 duration-200 text-3xl font-semibold font-playFair md:text-4xl'>imamrifai.dev</Link>
                 <div className='hidden md:flex md:items-center'>
                     {navLinks.map(({ name, href }) => (
-                        <a href={href} className={`text-lg mx-3 hover:text-blue-600 duration-200 hover:underline ${pathname === href ? "text-blue-600 font-semibold" : "text-gray-900"}`}>{name}</a>
+                        <a href={href} key={name} className={`text-lg mx-3 hover:text-blue-600 font-Poppins duration-200 hover:underline ${pathname === href ? "text-blue-600 font-semibold" : "text-gray-900"}`}>{name}</a>
                     ))}
                 </div>
-                <a href="#" className='hidden md:block md:text-lg border-2 hover:bg-blue-600 duration-200 transition-all hover:text-white  md:border-gray-700 md:w-min md:py-1 md:px-6 md:text-gray-900 md:font-semibold'>Contact</a>
+                <Link href="https://api.whatsapp.com/send?phone=6282118668919&text=Halo%2C%20imam" target='_blank' className='hidden md:block md:text-lg font-Poppins border-2 hover:bg-blue-600 duration-200 transition-all hover:text-white md:border-gray-700 md:w-min md:py-1 md:px-6 md:text-gray-900'>Contact</Link>
                 <Image
                     src="/menu.png"
                     width={23}

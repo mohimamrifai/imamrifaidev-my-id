@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function Projects() {
     return (
-        <div className='mt-20 pt-20 w-10/12 mx-auto lg:w-8/12 md:text-center lg:pt-28 lg:text-left' id='portofolio'>
+        <div className='mt-20 pt-20 font-Poppins w-10/12 mx-auto lg:w-8/12 md:text-center lg:pt-28 lg:text-left' id='portofolio'>
             <h2 className='text-2xl text-blue-600 font-semibold tracking-wider'>Portofolio</h2>
             <p className='text-gray-700 lg:text-lg'>Project yang pernah aku buat 🌱</p>
             <div className="container">

@@ -10,7 +10,7 @@ export default function Page() {
                 <title>Mencoba Memahami perbedaan <b>Var, let dan Const</b></title>
                 <meta name="description" content="Hai, hari ini aku mau sharing sedikit hasil pembelajaran aku tentang penggunaan kata kunci var, let, dan const untuk pembuatan variabel di javascript." />
             </Head>
-            <article className='mt-24 w-10/12 mx-auto md:w-8/12 md:mt-28 lg:w-6/12'>
+            <article className='font-Poppins mt-24 w-10/12 mx-auto md:w-8/12 md:mt-28 lg:w-6/12'>
                 <h1 className='text-3xl font-playFair'>Mencoba Memahami perbedaan <b>Var, let dan Const</b></h1>
                 <div className='mt-3 flex justify-between items-center border-b-2 pb-3'>
                     <span className='text-gray-700'>post by : <b>imam rifai</b></span>
