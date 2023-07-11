@@ -1,5 +1,7 @@
-
+'use client'
+import { useState } from 'react'
 import './globals.css'
+import Navbar from './components/Navbar'
 
 export const metadata = {
   title: 'imamrifai.dev',
@@ -7,9 +9,18 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+
+  const [isDark , setIsDark] = useState(false)
+
+  const handleDarkMode = () => {
+    document.body.classList.toggle('dark')
+    setIsDark(!isDark)
+  }
+
   return (
     <html lang="en" id='home'>
       <body className="duration-300 transition-all">
+      <Navbar isDark={isDark} handleDarkMode={handleDarkMode}/>
       {children}</body>
     </html>
   )

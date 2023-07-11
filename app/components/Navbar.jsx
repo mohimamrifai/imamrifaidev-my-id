@@ -9,16 +9,12 @@ import Link from 'next/link';
 import navLinks from '../navLinks';
 import {BsFillMoonFill, BsFillSunFill} from 'react-icons/bs'
 
-export default function Navbar() {
+export default function Navbar({isDark, handleDarkMode}) {
 
     const [active, setActive] = useState(false);
-    const [isDark , setIsDark] = useState(false)
+    
     const pathname = usePathname();
 
-    const handleDarkMode = () => {
-        document.body.classList.toggle('dark')
-        setIsDark(!isDark)
-      }
 
     return (
         <div>
@@ -30,8 +26,21 @@ export default function Navbar() {
                     ))}
                 </div>
                 <div className='flex items-center gap-3'>
-                {isDark ? <button  className='text-slate-100' onClick={handleDarkMode}><BsFillSunFill size={20}/></button> : <button onClick={handleDarkMode}><BsFillMoonFill size={20}/></button>}
-                <Link href="https://api.whatsapp.com/send?phone=6282118668919&text=Halo%2C%20imam" target='_blank' className='hidden md:block md:text-lg font-Poppins border-2 hover:bg-blue-600 duration-200 transition-all hover:text-white md:border-gray-700 md:w-min md:py-1 md:px-6 md:text-gray-900 dark:text-gray-100'>Contact</Link>
+                {isDark ? 
+                    <button  
+                        onClick={handleDarkMode}>
+                        <BsFillSunFill size={20} className='dark:text-white'/>
+                    </button> : 
+                    <button 
+                        onClick={handleDarkMode}>
+                        <BsFillMoonFill size={20} className='text-gray-900 dark:text-white'/>
+                    </button>
+                }
+                <Link 
+                    href="https://api.whatsapp.com/send?phone=6282118668919&text=Halo%2C%20imam" target='_blank' 
+                    className='hidden md:block md:text-lg font-Poppins border-2 hover:bg-blue-600 duration-200 transition-all hover:text-white md:border-gray-700 md:w-min md:py-1 md:px-6 md:text-gray-900 dark:text-gray-100'>
+                    Contact
+                </Link>
                 </div>
                 <AiOutlineMenu 
                     size={25}
