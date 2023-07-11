@@ -18,7 +18,7 @@ export default function Navbar({isDark, handleDarkMode}) {
                 <Title />
                 <div className='hidden md:flex md:items-center'>
                     {navLinks.map(({ name, href }) => (
-                        <LinkNav value={name} hrefValue={href}/>
+                        <LinkNav key={href} value={name} hrefValue={href}/>
                     ))}
                 </div>
                 <div className='flex items-center gap-3 md:gap-2'>
@@ -56,6 +56,7 @@ export default function Navbar({isDark, handleDarkMode}) {
                 <div className='flex flex-col'>
                     {navLinks.map(({ name, href }) => (
                         <Link 
+                            key={href}
                             href={href} 
                             className="mb-3 text-lg" 
                             onClick={() => setActive(false)}>
