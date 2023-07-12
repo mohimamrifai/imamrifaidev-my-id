@@ -1,5 +1,6 @@
+'use client'
+
 import React, { useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link';
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 import {BsFillMoonFill, BsFillSunFill} from 'react-icons/bs'
@@ -7,10 +8,16 @@ import Title from '../elements/title';
 import LinkNav from '../elements/link';
 import navLinks from '../navLinks';
 
-export default function Navbar({isDark, handleDarkMode}) {
+export default function Navbar() {
 
     // state untuk toggle humberger menu
     const [active, setActive] = useState(false);
+    const [isDark , setIsDark] = useState(false)
+
+  const handleDarkMode = () => {
+    document.body.classList.toggle('dark')
+    setIsDark(!isDark)
+  }
 
     return (
         <div>
