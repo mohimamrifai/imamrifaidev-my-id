@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link';
-import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
-import {BsFillMoonFill, BsFillSunFill} from 'react-icons/bs'
+import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
+import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs'
 import Title from '../elements/title';
 import LinkNav from '../elements/link';
 import navLinks from '../navLinks';
@@ -12,12 +12,31 @@ export default function Navbar() {
 
     // state untuk toggle humberger menu
     const [active, setActive] = useState(false);
-    const [isDark , setIsDark] = useState(false)
+    // state untuk dark / light
+    const [isDark, setIsDark] = useState(false)
 
-  const handleDarkMode = () => {
-    document.body.classList.toggle('dark')
-    setIsDark(!isDark)
-  }
+    // function untuk handle darkmode
+    const handleDarkMode = () => {
+        document.body.classList.toggle('dark')
+        setIsDark(!isDark)
+    }
+
+    // tampilan untuk icon dark & light
+    function DisplayDarkAndLight (){
+        return <>
+            {isDark ?
+                    <button
+                        onClick={handleDarkMode}>
+                        <BsFillSunFill size={20} className='dark:text-white' />
+                    </button>
+                    :
+                    <button
+                        onClick={handleDarkMode}>
+                        <BsFillMoonFill size={20} className='text-gray-900 dark:text-white' />
+                    </button>
+                    }
+        </>
+    } 
 
     return (
         <div>
@@ -25,32 +44,22 @@ export default function Navbar() {
                 <Title />
                 <div className='hidden md:flex md:items-center'>
                     {navLinks.map(({ name, href }) => (
-                        <LinkNav key={href} value={name} hrefValue={href}/>
+                        <LinkNav key={href} value={name} hrefValue={href} />
                     ))}
                 </div>
                 <div className='flex items-center gap-3 md:gap-2'>
-                    {isDark ? 
-                        <button  
-                            onClick={handleDarkMode}>
-                            <BsFillSunFill size={20} className='dark:text-white'/>
-                        </button>
-                         : 
-                        <button 
-                            onClick={handleDarkMode}>
-                            <BsFillMoonFill size={20} className='text-gray-900 dark:text-white'/>
-                        </button>
-                    }
-                    <Link 
-                        href="https://api.whatsapp.com/send?phone=6282118668919&text=Halo%2C%20imam" target='_blank' 
+                    <DisplayDarkAndLight />
+                    <Link
+                        href="https://api.whatsapp.com/send?phone=6282118668919&text=Halo%2C%20imam" target='_blank'
                         className='hidden md:block md:text-lg font-Poppins border-2 hover:bg-blue-600 duration-200 transition-all hover:text-white md:border-gray-700 md:w-min md:py-1 md:px-6 md:text-gray-900 dark:text-gray-100'>
                         Contact
                     </Link>
                 </div>
-                <AiOutlineMenu 
+                <AiOutlineMenu
                     size={25}
                     onClick={() => setActive(true)}
                     className='md:hidden dark:text-white'
-                    />
+                />
             </nav>
 
             {/* nav ketika aktif di mobile */}
@@ -62,16 +71,16 @@ export default function Navbar() {
                 />
                 <div className='flex flex-col'>
                     {navLinks.map(({ name, href }) => (
-                        <Link 
+                        <Link
                             key={href}
-                            href={href} 
-                            className="mb-3 text-lg" 
+                            href={href}
+                            className="mb-3 text-lg"
                             onClick={() => setActive(false)}>
                             {name}
                         </Link>
                     ))}
-                    <Link 
-                        href="https://api.whatsapp.com/send?phone=6282118668919&text=Halo%2C%20imam" target='_blank' 
+                    <Link
+                        href="https://api.whatsapp.com/send?phone=6282118668919&text=Halo%2C%20imam" target='_blank'
                         className='mb-3 text-lg border-2 border-white w-min py-1 px-6'>
                         Contact
                     </Link>
