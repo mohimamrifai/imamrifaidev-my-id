@@ -25,11 +25,11 @@ export default function Navbar() {
     return (
       <>
         {isDark ? (
-          <button onClick={handleDarkMode}>
+          <button type="button" onClick={handleDarkMode}>
             <BsFillSunFill size={20} className="dark:text-white" />
           </button>
         ) : (
-          <button onClick={handleDarkMode}>
+          <button type="button" onClick={handleDarkMode}>
             <BsFillMoonFill
               size={20}
               className="text-gray-900 dark:text-white"

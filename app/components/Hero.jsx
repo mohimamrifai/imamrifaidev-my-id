@@ -20,7 +20,7 @@ export default function Hero() {
                 <DisplayRole />
                 <DisplayBio />
                 <ButtonTalk />
-                <div className="social-media mt-28 font-medium text-xl md:mt-16">
+                <div className="social-media mt-24 font-medium text-xl md:mt-16">
                     <ButtonFollow />
                     <SocialMedia />
                 </div>

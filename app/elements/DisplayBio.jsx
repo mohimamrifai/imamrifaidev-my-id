@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from "framer-motion"
 
-const initial = { y: -450 }
+const initial = { y: -600 }
 const animate = { y: 0 }
 
 function DisplayBio() {
