@@ -11,13 +11,14 @@ const config = {
 const DisplayNama = () => {
   return (
     <motion.h3
-        initial={initial}
-        animate={animate}
-        transition={config}
-        className='mt-5 text-4xl font-medium tracking-widest font-Poppins dark:text-gray-100'>
-        I'm Imam rifai
+      initial={initial}
+      animate={animate}
+      transition={config}
+      className="mt-5 text-3xl font-medium tracking-widest font-Poppins dark:text-gray-100"
+    >
+      I'm Imam rifai 🖐
     </motion.h3>
-  )
+  );
 }
 
 export default DisplayNama

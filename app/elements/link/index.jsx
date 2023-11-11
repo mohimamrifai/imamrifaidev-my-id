@@ -8,10 +8,20 @@ const LinkNav = ({value, hrefValue}) => {
 
     const pathname = usePathname();
   return (
-    <Link href={hrefValue} className={`text-lg mx-3 hover:text-blue-600 font-Poppins duration-200 hover:underline ${pathname === hrefValue ? "text-blue-600 dark:text-gray-100 font-semibold" : "text-gray-900 dark:text-gray-100"}`}>
+    <div className="relative px-2 mx-2 py-1 group">
+      <Link
+        href={hrefValue}
+        className={`text-xl font-Poppins ${
+          pathname === hrefValue
+            ? "text-gray-900 dark:text-gray-100 font-semibold"
+            : "text-gray-900 dark:text-gray-100"
+        }`}
+      >
         {value}
-    </Link>
-  )
+      </Link>
+      <div className="absolute w-0 group-hover:w-full duration-30000 transition-all h-3 -z-10 bottom-1 bg-gradient-to-r from-cyan-500 to-blue-500 left-0"></div>
+    </div>
+  );
 }
 
 export default LinkNav

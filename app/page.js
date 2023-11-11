@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Scroll />
-      <main className='lg:mt-20 dark:bg-gray-900 dark:text-white'>
+      <main className='lg:pt-20 dark:bg-gray-900 dark:text-white'>
         <Hero />
         <About />
         <Skills />

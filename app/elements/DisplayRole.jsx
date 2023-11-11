@@ -11,7 +11,7 @@ function DisplayRole() {
             animate={animate}
             transition={{ duration: .5, ease: "backInOut" }}
             className='mt-3 text-4xl font-bold tracking-wider font-Poppins lg:text-6xl dark:text-gray-100'>
-            Front-end Developer
+            Fullstack Web Developer
         </motion.p>
     )
 }
