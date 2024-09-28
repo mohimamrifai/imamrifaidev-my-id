@@ -1,31 +1,66 @@
-"use client"
+"use client";
+import { Montserrat_Alternates } from "next/font/google";
+import { motion } from "framer-motion";
 
-import React from 'react'
-import DivExtra from "../elements/DivExtra"
-import DisplayNama from "../elements/DisplayNama"
-import DisplayRole from "../elements/DisplayRole"
-import DisplayBio from "../elements/DisplayBio"
-import ButtonTalk from "../elements/ButtonTalk"
-import ButtonFollow from "../elements/ButtonFollow"
-import SocialMedia from "./SocialMedia"
-import ImageProfil from '../elements/ImageProfil'
+const monserrat = Montserrat_Alternates({
+  subsets: ["vietnamese"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+import React from "react";
+import { BackgroundLines } from "@/components/ui/background-lines";
+
+const initial = { opacity: 0 };
+const animate = { opacity: 1 };
+const transition = { duration: 0.2 };
 
 export default function Hero() {
-
-    return (
-        <div className='px-6 pt-32 md:flex md:px-20 md:items-center md:justify-between lg:py-10 xl:py-16 md:pt-28 dark:bg-gray-900 duration-300 transition-all'>
-            <div className="left lg:w-8/12 lg:relative lg:z-10">
-                <DivExtra />
-                <DisplayNama />
-                <DisplayRole />
-                <DisplayBio />
-                <ButtonTalk />
-                <div className="social-media mt-24 font-medium text-xl md:mt-16">
-                    <ButtonFollow />
-                    <SocialMedia />
-                </div>
-            </div>
-            <ImageProfil />
+  return (
+    <BackgroundLines>
+      <div>
+        <motion.div
+          initial={initial}
+          animate={animate}
+          transition={transition}
+          className="py-16 px-10 text-center"
+        >
+          <p>Hello 👋, my name is</p>
+          <h1
+            className={`${monserrat.className} font-black text-xl md:text-3xl`}
+          >
+            MOHAMMAD IMAM RIFAI
+          </h1>
+        </motion.div>
+        <div className="flex flex-col gap-10 md:gap-14">
+          <motion.h1
+            initial={initial}
+            animate={animate}
+            transition={{delay: .1, duration: 1}}
+            href="#"
+            className="text-6xl md:text-8xl font-bold text-white custom-outline underline decoration-purple-500 md:ps-5"
+          >
+            UI & UX Designer
+          </motion.h1>
+          <motion.h1
+            initial={initial}
+            animate={animate}
+            transition={{ delay: 0.3, duration: 1 }}
+            href="#"
+            className="text-6xl md:text-8xl font-bold text-white custom-outline underline decoration-blue-400 text-right md:pe-5"
+          >
+            Software Engineer
+          </motion.h1>
+          <motion.h1
+            initial={initial}
+            animate={animate}
+            transition={{ delay: 0.5, duration: 1 }}
+            href="#"
+            className="text-6xl text-left md:text-8xl font-bold text-white custom-outline underline decoration-pink-400 md:text-center"
+          >
+            Remote Worker
+          </motion.h1>
         </div>
-    )
+      </div>
+    </BackgroundLines>
+  );
 }
