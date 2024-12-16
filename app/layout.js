@@ -1,3 +1,4 @@
+import ToTop from "@/components/commons/ToTop";
 import "./globals.css";
 import { Poppins } from "next/font/google";
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={poppins.className}>
         {children}
+        <ToTop />
       </body>
     </html>
   );

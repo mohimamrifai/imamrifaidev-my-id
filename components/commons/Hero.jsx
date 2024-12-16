@@ -24,9 +24,17 @@ export default function Hero() {
           transition={transition}
           className="py-16 px-10 text-center"
         >
-          <p>Hello 👋, my name is</p>
+          <div>Hello <motion.div className="inline-block" animate={{
+            rotate: [0, -20, 20, -20, 0],
+            transition: {
+              duration: 1,
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "easeInOut"
+            }
+          }}>👋</motion.div>, my name is</div>
           <h1
-            className={`${monserrat.className} font-black text-xl md:text-3xl`}
+            className={`${monserrat.className} font-black text-2xl md:text-4xl`}
           >
             MOHAMMAD IMAM RIFAI
           </h1>
@@ -39,7 +47,7 @@ export default function Hero() {
             href="#"
             className="text-6xl md:text-8xl font-bold text-white custom-outline underline decoration-purple-500 md:ps-5"
           >
-            UI & UX Designer
+            <motion.div>UI & UX Designer</motion.div>
           </motion.h1>
           <motion.h1
             initial={initial}
