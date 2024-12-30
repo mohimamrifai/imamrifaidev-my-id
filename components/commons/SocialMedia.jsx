@@ -9,31 +9,24 @@ export default function SocialMedia() {
     {
       id: 1,
       icon: <FaGithub className="text-2xl" />,
-      href: "https://github.com/imamrifai",
+      href: "https://github.com/mohimamrifai",
       label: "GitHub",
       color: "hover:text-gray-600"
     },
     {
       id: 2, 
       icon: <FaLinkedin className="text-2xl" />,
-      href: "https://linkedin.com/in/imamrifai",
+      href: "https://www.linkedin.com/in/mohammad-imam-rifai-79bab9265/",
       label: "LinkedIn",
       color: "hover:text-blue-600"
     },
     {
       id: 3,
       icon: <FaInstagram className="text-2xl" />,
-      href: "https://instagram.com/imamrifai.dev",
+      href: "https://instagram.com/maspalul_",
       label: "Instagram",
       color: "hover:text-pink-600"
     },
-    {
-      id: 4,
-      icon: <FaTwitter className="text-2xl" />,
-      href: "https://twitter.com/imamrifai_dev",
-      label: "Twitter",
-      color: "hover:text-blue-400"
-    }
   ]
 
   return (

@@ -36,7 +36,7 @@ export default function CtaContact() {
           className="flex justify-center mt-10"
         >
           <Link 
-            href="https://wa.me/6282118668919" 
+            href={`https://wa.me/6282118668919?text=${encodeURIComponent('Halo, saya tertarik dengan layanan Anda. Saya ingin berkonsultasi lebih lanjut.')}`}
             target="_blank" 
             className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-3 px-8 text-white font-bold text-xl rounded-lg hover:scale-105 transition-transform"
           >

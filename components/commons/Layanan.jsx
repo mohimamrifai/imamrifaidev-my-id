@@ -1,145 +1,16 @@
 "use client"
 import { motion } from "framer-motion";
-import { FaCode, FaPaintBrush, FaSearchPlus, FaCheck, FaTimes, FaCrown } from "react-icons/fa";
+import { FaCheck, FaTimes, FaCrown } from "react-icons/fa";
 import { useState } from "react";
-
-const services = [
-    {
-        icon: <FaPaintBrush className="text-4xl text-purple-500" />,
-        title: "UI/UX Design",
-        description: "Merancang antarmuka dan pengalaman pengguna yang menarik, intuitif dan efektif menggunakan Figma dengan prinsip desain modern",
-        price: "Rp 200.000",
-        levels: {
-            basic: [
-                { feature: "Desain UI 3 halaman", available: true },
-                { feature: "Wireframing", available: true },
-                { feature: "File sumber Figma", available: true },
-                { feature: "Konsultasi desain", available: true },
-                { feature: "Responsive design", available: true },
-                { feature: "Design system", available: false },
-                { feature: "Revisi desain", available: false },
-                { feature: "Interactive prototype", available: false },
-                { feature: "Style guide & dokumentasi", available: false },
-                { feature: "After-service support", available: false }
-            ],
-            intermediate: [
-                { feature: "Desain UI 6 halaman", available: true },
-                { feature: "Wireframing", available: true },
-                { feature: "File sumber Figma", available: true },
-                { feature: "Konsultasi desain", available: true },
-                { feature: "Responsive design", available: true },
-                { feature: "Design system", available: true },
-                { feature: "Revisi desain", available: true },
-                { feature: "Interactive prototype", available: true },
-                { feature: "Style guide & dokumentasi", available: false },
-                { feature: "After-service support", available: false }
-            ],
-            pro: [
-                { feature: "Desain UI 10+ halaman", available: true },
-                { feature: "Wireframing", available: true },
-                { feature: "File sumber Figma", available: true },
-                { feature: "Konsultasi desain", available: true },
-                { feature: "Responsive design", available: true },
-                { feature: "Design system", available: true },
-                { feature: "Revisi desain", available: true },
-                { feature: "Interactive prototype", available: true },
-                { feature: "Style guide & dokumentasi", available: true },
-                { feature: "After-service support", available: true }
-            ]
-        }
-    },
-    {
-        icon: <FaCode className="text-4xl text-blue-500" />,
-        title: "Web Development",
-        description: "Membangun website profesional yang responsif, cepat dan optimal menggunakan teknologi modern seperti Next.js dan Laravel",
-        price: "Rp 600.000",
-        levels: {
-            basic: [
-                { feature: "Jumlah halaman website", available: true },
-                { feature: "Responsive design", available: true },
-                { feature: "Form & fitur interaktif", available: true },
-                { feature: "Setup hosting & domain", available: true },
-                { feature: "SEO optimization", available: false },
-                { feature: "Revisi", available: false },
-                { feature: "CMS integration", available: false },
-                { feature: "Fitur e-commerce", available: false },
-                { feature: "API integration", available: false },
-                { feature: "Maintenance support", available: false }
-            ],
-            intermediate: [
-                { feature: "Jumlah halaman website", available: true },
-                { feature: "Responsive design", available: true },
-                { feature: "Form & fitur interaktif", available: true },
-                { feature: "Setup hosting & domain", available: true },
-                { feature: "SEO optimization", available: true },
-                { feature: "Revisi", available: true },
-                { feature: "CMS integration", available: true },
-                { feature: "Fitur e-commerce", available: true },
-                { feature: "API integration", available: false },
-                { feature: "Maintenance support", available: false }
-            ],
-            pro: [
-                { feature: "Jumlah halaman website", available: true },
-                { feature: "Responsive design", available: true },
-                { feature: "Form & fitur interaktif", available: true },
-                { feature: "Setup hosting & domain", available: true },
-                { feature: "SEO optimization", available: true },
-                { feature: "Revisi", available: true },
-                { feature: "CMS integration", available: true },
-                { feature: "Fitur e-commerce", available: true },
-                { feature: "API integration", available: true },
-                { feature: "Maintenance support", available: true }
-            ]
-        }
-    },
-    {
-        icon: <FaSearchPlus className="text-4xl text-green-500" />,
-        title: "SEO Optimization",
-        description: "Mengoptimalkan website Anda untuk mesin pencari dengan teknik SEO terbaik untuk meningkatkan peringkat dan visibilitas online",
-        price: "Rp 600.000",
-        levels: {
-            basic: [
-                { feature: "Riset keyword", available: true },
-                { feature: "On-page SEO", available: true },
-                { feature: "Laporan performa", available: true },
-                { feature: "Local SEO optimization", available: true },
-                { feature: "Technical SEO audit", available: false },
-                { feature: "Content strategy", available: false },
-                { feature: "Backlink building", available: false },
-                { feature: "Competitor analysis", available: false },
-                { feature: "Conversion optimization", available: false },
-                { feature: "Konsultasi & support", available: false }
-            ],
-            intermediate: [
-                { feature: "Riset keyword", available: true },
-                { feature: "On-page SEO", available: true },
-                { feature: "Laporan performa", available: true },
-                { feature: "Local SEO optimization", available: true },
-                { feature: "Technical SEO audit", available: true },
-                { feature: "Content strategy", available: true },
-                { feature: "Backlink building", available: true },
-                { feature: "Competitor analysis", available: true },
-                { feature: "Conversion optimization", available: false },
-                { feature: "Konsultasi & support", available: false }
-            ],
-            pro: [
-                { feature: "Riset keyword", available: true },
-                { feature: "On-page SEO", available: true },
-                { feature: "Laporan performa", available: true },
-                { feature: "Local SEO optimization", available: true },
-                { feature: "Technical SEO audit", available: true },
-                { feature: "Content strategy", available: true },
-                { feature: "Backlink building", available: true },
-                { feature: "Competitor analysis", available: true },
-                { feature: "Conversion optimization", available: true },
-                { feature: "Konsultasi & support", available: true }
-            ]
-        }
-    }
-];
+import { services } from "@/lib/service-packages";
 
 export default function Layanan() {
     const [selectedLevel, setSelectedLevel] = useState({});
+
+    const handleConsultation = (service, level) => {
+        const selectedMessage = service.message.find(msg => msg.type === level)?.message || 'Halo, saya tertarik dengan layanan Anda';
+        window.open(`https://wa.me/6282118668919?text=${selectedMessage}`, '_blank');
+    };
 
     return (
         <div className="mt-14 md:p-10 p-3">
@@ -183,7 +54,7 @@ export default function Layanan() {
                                         Mulai dari:
                                     </p>
                                     <p className="text-2xl font-bold text-purple-600">
-                                        {service.price}
+                                        {service.price.find(p => p.title.toLowerCase() === (selectedLevel[index] || 'basic')).price}
                                     </p>
                                 </div>
 
@@ -224,6 +95,7 @@ export default function Layanan() {
                                 </div>
 
                                 <motion.button
+                                    onClick={() => handleConsultation(service, selectedLevel[index] || 'basic')}
                                     whileHover={{ scale: 1.05 }}
                                     className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg shadow-lg hover:from-purple-700 hover:to-blue-700 transition-colors mt-4"
                                 >
@@ -283,6 +155,12 @@ export default function Layanan() {
                 <motion.button
                     whileHover={{ scale: 1.05 }}
                     className="mt-8 px-8 py-3 bg-white text-purple-600 rounded-lg shadow-lg font-semibold hover:bg-gray-100 transition-colors"
+                    onClick={() => handleConsultation({
+                        message: [{
+                            type: 'custom',
+                            message: 'Halo, saya tertarik dengan paket custom. Saya ingin berkonsultasi lebih lanjut.'
+                        }]
+                    }, 'custom')}
                 >
                     Konsultasi Gratis
                 </motion.button>
