@@ -9,11 +9,11 @@ export const BackgroundLines = ({
   svgOptions
 }) => {
   return (
-    (<div
-      className={cn("h-full md:h-screen w-full bg-[url('/background.png')] backdrop-blur-3xl dark:bg-black", className)}>
+    <div
+      className={cn("relative min-h-screen w-full bg-[url('/background.webp')] backdrop-blur-3xl dark:bg-black", className)}>
       <SVG svgOptions={svgOptions} />
       {children}
-    </div>)
+    </div>
   );
 };
 
