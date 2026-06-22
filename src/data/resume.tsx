@@ -77,7 +77,7 @@ export const DATA = {
       location: "Remote",
       title: "Founder & Software Engineer",
       logoUrl: "/profile.jpg",
-      start: "2024",
+      start: "2023",
       end: "Sekarang",
       description:
         "Membangun produk digital dan melayani klien dalam pembuatan website modern, UI/UX design, serta optimasi SEO. Berkomitmen menghadirkan solusi teknologi yang berdampak positif bagi pertumbuhan bisnis klien.",
@@ -94,31 +94,6 @@ export const DATA = {
     },
   ],
   projects: [
-    {
-      title: "Topupaja.com",
-      href: "https://topupaja-com.vercel.app/",
-      dates: "2024",
-      active: true,
-      description:
-        "Website topup game dirancang menggunakan Next.js, Tailwind CSS, dan TypeScript. Dilengkapi dengan integrasi payment gateway dan dashboard admin.",
-      technologies: [
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "Prisma",
-        "MySQL",
-        "Clerk",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://topupaja-com.vercel.app/",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "/project8.png",
-      video: "",
-    },
     {
       title: "Digify | Digital Marketing Landing Page",
       href: "https://digify-pi.vercel.app/",
