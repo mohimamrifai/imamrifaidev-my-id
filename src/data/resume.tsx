@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon, Wind, Database, GitBranch, Palette, Layers, Server } from "lucide-react";
+import { HomeIcon, Wind, Database, GitBranch, Palette, Layers, Server } from "lucide-react";
 import { ReactLight } from "@/components/ui/svgs/reactLight";
 import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
 import { Typescript } from "@/components/ui/svgs/typescript";
@@ -10,31 +10,30 @@ export const DATA = {
   initials: "MIR",
   url: "https://imamrifaidev.my.id",
   location: "Indonesia",
-  locationLink: "https://www.google.com/maps/place/Indonesia",
   description:
-    "Founder Maskode_Labs • Software Engineer • Remote Worker. Saya membangun pengalaman digital yang indah, bersih, dan fungsional dengan Next.js, TypeScript, dan Tailwind CSS.",
+    "Founder Maskode_Labs • Software Engineer • Remote Worker. Dari Indonesia 🇮🇩",
   summary:
-    "Saya seorang software engineer dan UI/UX designer yang passionate di bidang teknologi. Berfokus pada Next.js, TypeScript, dan Tailwind CSS untuk menciptakan solusi digital yang modern, responsif, dan ramah pengguna. Aktif membangun produk di Maskode_Labs serta melayani klien melalui layanan UI/UX Design, Web Development, dan SEO Optimization.",
-  avatarUrl: "/profile.jpg",
+    "Saya adalah seorang software engineer yang senang membangun hal-hal baru di internet. Mulai dari website, aplikasi web, hingga produk berbasis AI, saya tertarik menciptakan solusi yang tidak hanya terlihat menarik tetapi juga benar-benar bermanfaat bagi penggunanya.",
+  avatarUrl: "/profile.jpeg",
   skills: [
     { name: "React", icon: ReactLight },
     { name: "Next.js", icon: NextjsIconDark },
     { name: "TypeScript", icon: Typescript },
     { name: "Node.js", icon: Nodejs },
+    { name: "Nest.js", icon: Server },
     { name: "Tailwind CSS", icon: Wind },
     { name: "Laravel", icon: Layers },
     { name: "Prisma", icon: Server },
+    { name: "Drizzle", icon: Server },
     { name: "MySQL", icon: Database },
     { name: "Git", icon: GitBranch },
-    { name: "Figma", icon: Palette },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
-    email: "hello@imamrifaidev.my.id",
-    tel: "+6282118668919",
+    email: "imamrifaibisnis@gmail.com",
+    // tel: "+6282118668919",
     social: {
       GitHub: {
         name: "GitHub",
@@ -62,7 +61,7 @@ export const DATA = {
       },
       email: {
         name: "Send Email",
-        url: "mailto:hello@imamrifaidev.my.id",
+        url: "mailto:imamrifaibisnis@gmail.com",
         icon: Icons.email,
         navbar: false,
       },
@@ -76,12 +75,25 @@ export const DATA = {
       badges: [],
       location: "Remote",
       title: "Founder & Software Engineer",
-      logoUrl: "/profile.jpg",
+      logoUrl: "/maskode.svg",
       start: "2023",
       end: "Sekarang",
       description:
         "Membangun produk digital dan melayani klien dalam pembuatan website modern, UI/UX design, serta optimasi SEO. Berkomitmen menghadirkan solusi teknologi yang berdampak positif bagi pertumbuhan bisnis klien.",
     },
+    {
+      fastwork: true,
+      company: "Fastwork",
+      href: "https://fastwork.id/byob/9u0B00PF3g?openExternalBrowser=1&source=byob",
+      badges: [],
+      location: "Remote",
+      title: "Freelance Software Engineer",
+      logoUrl: "/fastwork.svg",
+      start: "2023",
+      end: "Sekarang",
+      description:
+        "Membangun produk digital dan melayani klien dalam pembuatan website dan aplikasi mobile. Berkomitmen menghadirkan solusi teknologi yang berdampak positif bagi pertumbuhan bisnis klien.",
+    }
   ],
   education: [
     {
