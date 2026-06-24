@@ -107,6 +107,60 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Caker.id | Job Portal",
+      href: "https://caker.vercel.app/",
+      dates: "2025",
+      active: true,
+      description:
+        "Jelajahi ribuan lowongan dari perusahaan terpercaya. Filter berdasarkan keahlian, lokasi, dan rentang gaji—semua dalam satu tempat yang tenang dan tanpa gangguan.",
+      technologies: ["Fullstack Next.js","PostgreSQL","Prisma","Tailwind CSS", "Framer Motion"],
+      links: [
+        {
+          type: "Website",
+          href: "https://caker.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/portfolio/caker.png",
+      video: "",
+    },
+    {
+      title: "Pusat Tech Ventur",
+      href: "https://pusat-techventur.vercel.app/",
+      dates: "2025",
+      active: true,
+      description:
+        "Direktori terkurasi berisi 12.000+ tempat, layanan, dan peluang teknologi pilihan—dari co-working space, startup studio, hingga investor & mentor. Kurasi tim lokal, diperbarui setiap minggu.",
+      technologies: ["Next.js","Nest.js","PostgreSQL","Prisma","Tailwind CSS", "Framer Motion"],
+      links: [
+        {
+          type: "Website",
+          href: "https://pusat-techventur.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/portfolio/tech-ventur.png",
+      video: "",
+    },
+    {
+      title: "Rental Mobil - Landing Page",
+      href: "https://rentaldotmobil.vercel.app/",
+      dates: "2025",
+      active: true,
+      description:
+        "Landing page untuk rental mobil yang dirancang menggunakan Next.js, Tailwind CSS, dan Framer Motion dengan animasi yang halus.",
+      technologies: ["Next.js", "Tailwind CSS", "Framer Motion"],
+      links: [
+        {
+          type: "Website",
+          href: "https://rentaldotmobil.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/portfolio/rental-mobil.png",
+      video: "",
+    },
+    {
       title: "Digify | Digital Marketing Landing Page",
       href: "https://digify-pi.vercel.app/",
       dates: "2024",
@@ -143,24 +197,6 @@ export const DATA = {
       video: "",
     },
     {
-      title: "Mirland | Jasa Website",
-      href: "https://mirland-id.vercel.app",
-      dates: "2024",
-      active: true,
-      description:
-        "Website untuk layanan jasa pembuatan website. Didirikan untuk membantu UMKM memiliki website profesional dengan harga terjangkau.",
-      technologies: ["Next.js", "Tailwind CSS", "Framer Motion"],
-      links: [
-        {
-          type: "Website",
-          href: "https://mirland-id.vercel.app",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "/project5.png",
-      video: "",
-    },
-    {
       title: "Easy Rent | Rental Mobile",
       href: "https://rent-mir.vercel.app/",
       dates: "2024",
@@ -194,6 +230,24 @@ export const DATA = {
         },
       ],
       image: "/project7.png",
+      video: "",
+    },
+    {
+      title: "Mirland | Jasa Website",
+      href: "https://mirland-id.vercel.app",
+      dates: "2024",
+      active: true,
+      description:
+        "Website untuk layanan jasa pembuatan website. Didirikan untuk membantu UMKM memiliki website profesional dengan harga terjangkau.",
+      technologies: ["Next.js", "Tailwind CSS", "Framer Motion"],
+      links: [
+        {
+          type: "Website",
+          href: "https://mirland-id.vercel.app",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/project5.png",
       video: "",
     },
   ],
