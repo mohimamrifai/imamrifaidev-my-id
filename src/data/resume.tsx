@@ -143,7 +143,7 @@ export const DATA = {
       video: "",
     },
     {
-      title: "Rental Mobil - Landing Page",
+      title: "Rental Mobil - Template V2",
       href: "https://rentaldotmobil.vercel.app/",
       dates: "2025",
       active: true,
@@ -152,7 +152,7 @@ export const DATA = {
       technologies: ["Next.js", "Tailwind CSS", "Framer Motion"],
       links: [
         {
-          type: "Website",
+          type: "Template",
           href: "https://rentaldotmobil.vercel.app/",
           icon: <Icons.globe className="size-3" />,
         },
@@ -197,7 +197,7 @@ export const DATA = {
       video: "",
     },
     {
-      title: "Easy Rent | Rental Mobile",
+      title: "Easy Rent | Rental Mobile V1",
       href: "https://rent-mir.vercel.app/",
       dates: "2024",
       active: true,
@@ -206,12 +206,12 @@ export const DATA = {
       technologies: ["Next.js", "Tailwind CSS", "Framer Motion"],
       links: [
         {
-          type: "Website",
+          type: "Template",
           href: "https://rent-mir.vercel.app/",
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/project6.png",
+      image: "/portfolio/easy-rent.png",
       video: "",
     },
     {
