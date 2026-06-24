@@ -196,30 +196,6 @@ export const DATA = {
       image: "/project7.png",
       video: "",
     },
-    {
-      title: "Umahku | Furniture Shop",
-      href: "#",
-      dates: "2024",
-      active: true,
-      description:
-        "Desain UI/UX untuk toko furniture online. Fokus pada pengalaman pengguna yang intuitif untuk menjelajahi dan membeli produk furniture.",
-      technologies: ["Figma"],
-      links: [],
-      image: "/project2.png",
-      video: "",
-    },
-    {
-      title: "Website Digital Bank",
-      href: "#",
-      dates: "2024",
-      active: true,
-      description:
-        "Desain UI/UX untuk aplikasi digital banking dengan tampilan modern dan fitur yang user-friendly.",
-      technologies: ["Figma"],
-      links: [],
-      image: "/project4.png",
-      video: "",
-    },
   ],
   hackathons: [],
 } as const;
