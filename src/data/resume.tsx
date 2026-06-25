@@ -107,6 +107,24 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "La Mania Academy Football",
+      href: "https://lamania-academy.vercel.app/",
+      dates: "2025",
+      active: true,
+      description:
+        "Landing page dan website untuk Sebuah Sekolah Sepak bola, Lebih dari 200 siswa aktif ditempa oleh pelatih bersertifikat UEFA & PSSI di lapangan standar FIFA. Usia 6 sampai 17 tahun.",
+      technologies: ["Fullstack Next.js","Tailwind CSS", "Framer Motion"],
+      links: [
+        {
+          type: "Website",
+          href: "https://lamania-academy.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/portfolio/lamania.png",
+      video: "",
+    },
+    {
       title: "Caker.id | Job Portal",
       href: "https://caker.vercel.app/",
       dates: "2025",
