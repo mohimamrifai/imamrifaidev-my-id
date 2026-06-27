@@ -161,6 +161,24 @@ export const DATA = {
       video: "",
     },
     {
+      title: "Bengkel Kita",
+      href: "https://bengkelkita.vercel.app/",
+      dates: "2025",
+      active: true,
+      description:
+        "Teknisi profesional untuk servis AC, listrik, pipa, las, dan mekanik kendaraan. Datang ke tempat Anda, harga transparan, bergaransi 30 hari.",
+      technologies: ["Fullstack Next.js","Tailwind CSS", "Framer Motion"],
+      links: [
+        {
+          type: "Website",
+          href: "https://bengkelkita.vercel.app/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/portfolio/bengkelkita.png",
+      video: "",
+    },
+    {
       title: "Rental Mobil - Template V2",
       href: "https://rentaldotmobil.vercel.app/",
       dates: "2025",
