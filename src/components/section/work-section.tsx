@@ -7,9 +7,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { DATA } from "@/data/resume";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import type { WorkContent } from "@/lib/content";
 
 function LogoImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);
@@ -30,10 +30,10 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-export default function WorkSection() {
+export default function WorkSection({ work }: { work: WorkContent[] }) {
   return (
     <Accordion type="single" collapsible className="w-full grid gap-6">
-      {DATA.work.map((work) => (
+      {work.map((work) => (
         <AccordionItem
           key={work.company}
           value={work.company}
@@ -84,4 +84,3 @@ export default function WorkSection() {
     </Accordion>
   );
 }
-
