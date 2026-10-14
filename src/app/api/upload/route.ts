@@ -15,7 +15,7 @@ const ALLOWED = new Set([
   "image/svg+xml",
 ]);
 
-const MAX_SIZE = 5 * 1024 * 1024; // 5 MB
+const MAX_SIZE = 4 * 1024 * 1024; // 4 MB (Vercel Hobby caps the body at ~4.5 MB)
 
 export async function POST(request: NextRequest) {
   const session = await getSession();

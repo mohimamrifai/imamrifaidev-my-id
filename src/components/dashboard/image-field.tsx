@@ -5,6 +5,74 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
+/** Vercel Hobby rejects request bodies over ~4.5 MB, so stay well below it. */
+const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
+/** Only bother re-encoding files bigger than this. */
+const OPTIMIZE_THRESHOLD_BYTES = 1.2 * 1024 * 1024;
+const MAX_DIMENSION = 1920;
+
+const RASTER_TYPES = new Set([
+  "image/png",
+  "image/jpeg",
+  "image/jpg",
+  "image/webp",
+]);
+
+function loadImage(file: File): Promise<HTMLImageElement> {
+  return new Promise((resolve, reject) => {
+    const objectUrl = URL.createObjectURL(file);
+    const image = new Image();
+    image.onload = () => {
+      URL.revokeObjectURL(objectUrl);
+      resolve(image);
+    };
+    image.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+      reject(new Error("Gambar tidak bisa dibaca."));
+    };
+    image.src = objectUrl;
+  });
+}
+
+/**
+ * Downscale and re-encode large raster images in the browser so uploads always
+ * fit the serverless request limit. Small files and non-raster formats
+ * (svg/gif) are returned unchanged.
+ */
+async function optimizeImage(file: File): Promise<File> {
+  if (!RASTER_TYPES.has(file.type) || file.size <= OPTIMIZE_THRESHOLD_BYTES) {
+    return file;
+  }
+
+  const image = await loadImage(file);
+  const scale = Math.min(
+    1,
+    MAX_DIMENSION / Math.max(image.naturalWidth, image.naturalHeight)
+  );
+  const width = Math.max(1, Math.round(image.naturalWidth * scale));
+  const height = Math.max(1, Math.round(image.naturalHeight * scale));
+
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  const context = canvas.getContext("2d");
+  if (!context) {
+    return file;
+  }
+  context.drawImage(image, 0, 0, width, height);
+
+  const blob = await new Promise<Blob | null>((resolve) =>
+    canvas.toBlob(resolve, "image/webp", 0.85)
+  );
+  if (!blob) {
+    return file;
+  }
+
+  const name = `${file.name.replace(/\.[^.]+$/, "") || "image"}.webp`;
+  const optimized = new File([blob], name, { type: "image/webp" });
+  return optimized.size < file.size ? optimized : file;
+}
+
 export function ImageField({
   name,
   label,
@@ -31,11 +99,17 @@ export function ImageField({
       if (!file.type.startsWith("image/")) {
         throw new Error("File harus berupa gambar.");
       }
-      if (file.size > 5 * 1024 * 1024) {
-        throw new Error("Ukuran file maksimal 5 MB.");
+
+      const prepared = await optimizeImage(file);
+
+      if (prepared.size > MAX_UPLOAD_BYTES) {
+        throw new Error(
+          "Gambar terlalu besar (maksimal 4 MB setelah dikompres). Coba gambar lain."
+        );
       }
+
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("file", prepared);
       const response = await fetch("/api/upload", {
         method: "POST",
         body: formData,
@@ -43,6 +117,9 @@ export function ImageField({
       const data = (await response.json().catch(() => null)) as
         | { url?: string; error?: string }
         | null;
+      if (response.status === 413) {
+        throw new Error("Gambar terlalu besar untuk diunggah. Coba gambar lain.");
+      }
       if (!response.ok || !data?.url) {
         throw new Error(data?.error || "Upload gagal.");
       }
