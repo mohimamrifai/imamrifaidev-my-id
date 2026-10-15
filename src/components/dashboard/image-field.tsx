@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -87,7 +86,35 @@ export function ImageField({
   const [url, setUrl] = useState(value ?? "");
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
   const fileInputId = `${name}-file`;
+
+  /**
+   * While an upload is running the form must not be submitted: the image URL
+   * is not part of the form yet, so saving early would store the previous (or
+   * an empty) image. Disabling the submit buttons blocks clicks and implicit
+   * (Enter) submissions.
+   */
+  useEffect(() => {
+    const form = rootRef.current?.closest("form");
+    if (!form) {
+      return;
+    }
+    const buttons = form.querySelectorAll<HTMLElement>(
+      'button[type="submit"], input[type="submit"]'
+    );
+    for (const button of buttons) {
+      if (uploading) {
+        if (!button.hasAttribute("data-upload-guard")) {
+          button.setAttribute("data-upload-guard", "true");
+        }
+        (button as HTMLButtonElement).disabled = true;
+      } else if (button.hasAttribute("data-upload-guard")) {
+        button.removeAttribute("data-upload-guard");
+        (button as HTMLButtonElement).disabled = false;
+      }
+    }
+  }, [uploading]);
 
   async function handleFile(file: File | undefined) {
     if (!file) {
@@ -132,7 +159,7 @@ export function ImageField({
   }
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-2" ref={rootRef}>
       <Label>{label}</Label>
       {url && (
         // eslint-disable-next-line @next/next/no-img-element
@@ -165,7 +192,14 @@ export function ImageField({
           {uploading ? "Mengunggah…" : "Upload gambar"}
         </label>
       </div>
-      {hint && <p className="text-xs text-muted-foreground">{hint}</p>}
+      {uploading && (
+        <p className="text-xs text-amber-600">
+          Menunggu upload selesai… tombol Simpan dinonaktifkan sementara.
+        </p>
+      )}
+      {hint && !uploading && (
+        <p className="text-xs text-muted-foreground">{hint}</p>
+      )}
       {error && <p className="text-xs text-destructive">{error}</p>}
     </div>
   );

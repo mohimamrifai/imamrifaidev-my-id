@@ -8,7 +8,9 @@ import WorkSection from "@/components/section/work-section";
 
 const BLUR_FADE_DELAY = 0.04;
 
-export const revalidate = 300;
+// Always render with fresh database content: the dashboard controls this page,
+// so it must never serve a cached/stale copy.
+export const dynamic = "force-dynamic";
 
 export default async function Page() {
   const DATA = await getContent();

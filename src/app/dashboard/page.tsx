@@ -92,7 +92,7 @@ export default async function DashboardPage() {
             <strong className="text-foreground">Tips:</strong> login memakai
             akun tunggal yang dikonfigurasi lewat{" "}
             <code>ADMIN_EMAIL</code> / <code>ADMIN_PASSWORD</code>. Gambar
-            diunggah ke Vercel Blob (kuota gratis Hobby).
+            diunggah ke Neon Object Storage (gratis).
           </p>
           <p>
             Situs publik di-cache selama 5 menit, tapi setiap perubahan dari

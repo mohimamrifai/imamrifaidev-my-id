@@ -161,7 +161,7 @@ export function WorkForm({ work }: { work?: WorkRow }) {
           name="logo"
           label="Logo Perusahaan"
           value={work?.logoUrl ?? ""}
-          hint="Upload otomatis ke Vercel Blob."
+          hint="Upload otomatis ke Neon Object Storage."
         />
 
         <div className="flex justify-end">

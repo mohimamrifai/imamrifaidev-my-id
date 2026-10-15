@@ -159,7 +159,7 @@ export function ProjectForm({ project }: { project?: ProjectRow }) {
             name="image"
             label="Gambar Thumbnail"
             value={project?.imageUrl ?? ""}
-            hint="Upload otomatis ke Vercel Blob."
+            hint="Upload otomatis ke Neon Object Storage."
           />
           <Field label="URL Video (opsional)">
             <Input name="video" defaultValue={project?.videoUrl ?? ""} placeholder="https://…" />

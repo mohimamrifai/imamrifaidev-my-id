@@ -1,5 +1,4 @@
 import "./load-env";
-import { DATA } from "@/data/resume";
 import { db } from "./index";
 import {
   education,
@@ -9,29 +8,20 @@ import {
   socialLinks,
   workExperience,
 } from "./schema";
+import {
+  seedEducation,
+  seedProfile,
+  seedProjects,
+  seedSkills,
+  seedSocialLinks,
+  seedWork,
+} from "./seed-data";
 
-const SKILL_ICONS: Record<string, string> = {
-  React: "react",
-  "Next.js": "nextjs",
-  TypeScript: "typescript",
-  "Node.js": "nodejs",
-  "Nest.js": "nestjs",
-  "Tailwind CSS": "tailwindcss",
-  Laravel: "laravel",
-  Prisma: "prisma",
-  Drizzle: "prisma",
-  MySQL: "mysql",
-  Git: "git",
-};
-
-const SOCIAL_ICONS: Record<string, string> = {
-  GitHub: "github",
-  LinkedIn: "linkedin",
-  Instagram: "instagram",
-  WhatsApp: "whatsapp",
-  "Send Email": "email",
-};
-
+/**
+ * Restore the database from `src/db/seed-data.ts`, the snapshot of the live
+ * content. Regenerate the snapshot with `npm run db:snapshot` after making
+ * changes in the dashboard so the seed always matches the current data.
+ */
 async function main() {
   if (!db) {
     console.error(
@@ -50,91 +40,28 @@ async function main() {
     db.delete(profile),
   ]);
 
-  console.log("Mengisi profile…");
-  await db.insert(profile).values({
-    id: 1,
-    name: DATA.name,
-    initials: DATA.initials,
-    url: DATA.url,
-    location: DATA.location,
-    description: DATA.description,
-    summary: DATA.summary,
-    avatarUrl: DATA.avatarUrl,
-    email: DATA.contact.email,
-  });
-
-  console.log("Mengisi skills…");
-  const skillValues = DATA.skills.map((skill, index) => ({
-    name: skill.name,
-    icon: SKILL_ICONS[skill.name] ?? "",
-    sortOrder: index,
-  }));
-  if (skillValues.length > 0) {
-    await db.insert(skills).values(skillValues);
+  console.log("Mengisi data dari snapshot (src/db/seed-data.ts)…");
+  await db.insert(profile).values({ id: 1, ...seedProfile });
+  if (seedSkills.length > 0) {
+    await db.insert(skills).values(seedSkills);
+  }
+  if (seedSocialLinks.length > 0) {
+    await db.insert(socialLinks).values(seedSocialLinks);
+  }
+  if (seedWork.length > 0) {
+    await db.insert(workExperience).values(seedWork);
+  }
+  if (seedEducation.length > 0) {
+    await db.insert(education).values(seedEducation);
+  }
+  if (seedProjects.length > 0) {
+    await db.insert(projects).values(seedProjects);
   }
 
-  console.log("Mengisi social links…");
-  const socialValues = Object.entries(DATA.contact.social).map(
-    ([name, value], index) => ({
-      label: value.name,
-      url: value.url,
-      icon: SOCIAL_ICONS[name] ?? "",
-      showInNavbar: value.navbar,
-      sortOrder: index,
-    })
+  console.log(
+    `Seed selesai ✔ (skills: ${seedSkills.length}, social: ${seedSocialLinks.length}, ` +
+      `work: ${seedWork.length}, education: ${seedEducation.length}, projects: ${seedProjects.length})`
   );
-  if (socialValues.length > 0) {
-    await db.insert(socialLinks).values(socialValues);
-  }
-
-  console.log("Mengisi work…");
-  const workValues = DATA.work.map((work, index) => ({
-    company: work.company,
-    href: work.href,
-    location: work.location,
-    title: work.title,
-    description: work.description,
-    logoUrl: work.logoUrl,
-    start: work.start,
-    end: work.end ?? "",
-    sortOrder: index,
-  }));
-  if (workValues.length > 0) {
-    await db.insert(workExperience).values(workValues);
-  }
-
-  console.log("Mengisi education…");
-  const educationValues = DATA.education.map((entry, index) => ({
-    school: entry.school,
-    href: entry.href,
-    degree: entry.degree,
-    logoUrl: entry.logoUrl,
-    start: entry.start,
-    end: entry.end ?? "",
-    sortOrder: index,
-  }));
-  if (educationValues.length > 0) {
-    await db.insert(education).values(educationValues);
-  }
-
-  console.log("Mengisi projects…");
-  const projectValues = DATA.projects.map((project, index) => ({
-    title: project.title,
-    href: project.href,
-    dates: project.dates,
-    description: project.description,
-    technologies: [...project.technologies],
-    imageUrl: project.image,
-    videoUrl: project.video,
-    links: project.links.map((link) => ({ type: link.type, href: link.href })),
-    active: project.active ?? true,
-    sortOrder: index,
-  }));
-  if (projectValues.length > 0) {
-    await db.insert(projects).values(projectValues);
-  }
-
-  console.log("Seed selesai ✔ (total project: " + projectValues.length + ")");
 }
 
 main().catch((error) => {

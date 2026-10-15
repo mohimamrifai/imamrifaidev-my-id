@@ -62,14 +62,19 @@ or unreachable, the public site automatically falls back to the static data in
    ```
 
    (Or set `DATABASE_URL` / `AWS_*` manually — see `.env.example`. Without a
-   database the site runs on static data.)
+   database the site falls back to the content snapshot in
+   `src/db/seed-data.ts`.)
 
-4. Set up the database schema and seed it with the current resume content:
+4. Set up the database schema and seed it with the content snapshot:
 
    ```bash
    pnpm db:migrate   # or: pnpm db:push
    pnpm db:seed
    ```
+
+   After changing content in the dashboard, refresh the snapshot with
+   `pnpm db:snapshot` so the seed (and the offline fallback) keeps matching
+   the live data.
 
 5. Start the local server:
 
@@ -109,7 +114,8 @@ or unreachable, the public site automatically falls back to the static data in
 3. Add `AUTH_SECRET`, and optionally `ADMIN_EMAIL` / `ADMIN_PASSWORD`.
 4. Run `pnpm db:migrate && pnpm db:seed` once against the production database
    (from your machine, with the production `DATABASE_URL` in `.env.local`).
-5. Deploy. The public site revalidates automatically after dashboard edits.
+5. Deploy. The public site reads the database on every request, so dashboard
+   edits appear immediately.
 
 # Scripts
 
@@ -119,7 +125,8 @@ pnpm build        # production build
 pnpm db:push      # create/update tables from the schema
 pnpm db:generate  # generate a migration file into ./drizzle
 pnpm db:migrate   # apply migrations
-pnpm db:seed      # fill the database with the current resume content
+pnpm db:seed      # fill the database from the content snapshot (src/db/seed-data.ts)
+pnpm db:snapshot  # refresh the snapshot from the live database
 pnpm db:studio    # browse the database in Drizzle Studio
 ```
 

@@ -62,7 +62,7 @@ export default async function ProfilePage({
           name="avatarUrl"
           label="Foto Profil"
           value={row?.avatarUrl ?? ""}
-          hint="Upload otomatis ke Vercel Blob, atau tempel URL gambar."
+          hint="Upload otomatis ke Neon Object Storage, atau tempel URL gambar."
         />
 
         <div className="flex justify-end">

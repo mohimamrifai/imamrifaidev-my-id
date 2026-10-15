@@ -9,7 +9,14 @@ import {
   socialLinks,
   workExperience,
 } from "@/db/schema";
-import { DATA } from "@/data/resume";
+import {
+  seedEducation,
+  seedProfile,
+  seedProjects,
+  seedSkills,
+  seedSocialLinks,
+  seedWork,
+} from "@/db/seed-data";
 import { resolveIcon, type IconComponent } from "@/lib/icon-registry";
 import type { ReactNode } from "react";
 
@@ -71,62 +78,69 @@ export type SiteContent = {
   social: SocialContent;
 };
 
-/** Build the fallback content straight from the static resume data. */
-function contentFromData(): SiteContent {
+/**
+ * Build the fallback content from the seed snapshot (`src/db/seed-data.ts`),
+ * which mirrors the current state of the live database.
+ */
+function contentFromSnapshot(): SiteContent {
   const social: SocialContent = {};
-  for (const [name, value] of Object.entries(DATA.contact.social)) {
-    social[name] = {
-      name: value.name,
-      url: value.url,
-      icon: value.icon,
-      navbar: value.navbar,
+  for (const link of seedSocialLinks) {
+    const icon = resolveIcon(link.icon);
+    if (!link.label || !icon) {
+      continue;
+    }
+    social[link.label] = {
+      name: link.label,
+      url: link.url,
+      icon,
+      navbar: link.showInNavbar,
     };
   }
   return {
-    name: DATA.name,
-    initials: DATA.initials,
-    url: DATA.url,
-    location: DATA.location,
-    description: DATA.description,
-    summary: DATA.summary,
-    avatarUrl: DATA.avatarUrl,
-    email: DATA.contact.email,
-    skills: DATA.skills.map((skill) => ({
+    name: seedProfile.name,
+    initials: seedProfile.initials,
+    url: seedProfile.url,
+    location: seedProfile.location,
+    description: seedProfile.description,
+    summary: seedProfile.summary,
+    avatarUrl: seedProfile.avatarUrl,
+    email: seedProfile.email,
+    skills: seedSkills.map((skill) => ({
       name: skill.name,
-      icon: skill.icon,
+      icon: resolveIcon(skill.icon) ?? undefined,
     })),
-    work: DATA.work.map((work) => ({
+    work: seedWork.map((work) => ({
       company: work.company,
       href: work.href,
-      badges: [...work.badges],
+      badges: [],
       location: work.location,
       title: work.title,
       logoUrl: work.logoUrl,
       start: work.start,
-      end: work.end ?? "",
+      end: work.end,
       description: work.description,
     })),
-    education: DATA.education.map((entry) => ({
+    education: seedEducation.map((entry) => ({
       school: entry.school,
       href: entry.href,
       degree: entry.degree,
       logoUrl: entry.logoUrl,
       start: entry.start,
-      end: entry.end ?? "",
+      end: entry.end,
     })),
-    projects: DATA.projects.map((project) => ({
+    projects: seedProjects.map((project) => ({
       title: project.title,
       href: project.href,
       dates: project.dates,
       active: project.active,
       description: project.description,
       technologies: [...project.technologies],
-      image: project.image,
-      video: project.video,
+      image: project.imageUrl,
+      video: project.videoUrl,
       links: project.links.map((link) => ({
         type: link.type,
         href: link.href,
-        icon: link.icon,
+        icon: <Icons.globe className="size-3" />,
       })),
     })),
     social,
@@ -139,16 +153,15 @@ function contentFromData(): SiteContent {
  * a fallback so the public site never breaks.
  */
 export async function getContent(): Promise<SiteContent> {
-  const fallback = contentFromData();
+  const fallback = contentFromSnapshot();
   if (!db) {
     return fallback;
   }
 
   try {
-    const [profileRow] = await db.select().from(profile).limit(1);
-
-    const [skillRows, socialRows, workRows, educationRows, projectRows] =
+    const [[profileRow], skillRows, socialRows, workRows, educationRows, projectRows] =
       await Promise.all([
+        db.select().from(profile).limit(1),
         db.select().from(skills).orderBy(asc(skills.sortOrder)),
         db.select().from(socialLinks).orderBy(asc(socialLinks.sortOrder)),
         db
@@ -236,6 +249,29 @@ export async function getContent(): Promise<SiteContent> {
     };
   } catch (error) {
     console.error("[content] Database error, falling back to static data:", error);
+    return fallback;
+  }
+}
+
+/** Lightweight profile lookup used for the document metadata (title, description). */
+export async function getSiteMeta() {
+  const fallback = {
+    name: seedProfile.name,
+    url: seedProfile.url,
+    description: seedProfile.description,
+  };
+  if (!db) {
+    return fallback;
+  }
+  try {
+    const [row] = await db.select().from(profile).limit(1);
+    return {
+      name: row?.name || fallback.name,
+      url: row?.url || fallback.url,
+      description: row?.description || fallback.description,
+    };
+  } catch (error) {
+    console.error("[content] Metadata lookup failed, using snapshot:", error);
     return fallback;
   }
 }
